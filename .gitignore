@@ -1,4 +1,4 @@
 bootstrap/bootstrap.wad
 dist
 util/target
-lumps/{colormap.lmp,playpal.lmp}
+lumps/{colormap.lmp,genmidi.lmp,playpal.lmp}

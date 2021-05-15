@@ -6,3 +6,4 @@
 [lumps]
 PLAYPAL
 COLORMAP
+GENMIDI

@@ -58,6 +58,7 @@ pub fn generate_colormap(dark_color: [u8; 3]) -> crate::Result {
 fn write_output<W: Write, I: IntoIterator<Item = u8>>(w: &mut W, i: I) -> crate::Result {
     let end: Vec<u8> = i.into_iter().collect();
     w.write_all(&end)?;
+    w.flush()?;
     Ok(())
 }
 

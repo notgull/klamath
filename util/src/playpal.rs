@@ -69,6 +69,7 @@ fn write_palette<W: Write>(w: &mut W, palette: impl IntoIterator<Item = [u8; 3]>
         .flat_map(|rgb| ArrayIter::new(rgb))
         .map(|b| w.write_all(&[b]))
         .collect::<io::Result<()>>()?;
+    w.flush()?;
     Ok(())
 }
 

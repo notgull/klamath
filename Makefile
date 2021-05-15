@@ -1,5 +1,6 @@
 # Apache 2.0 License
 
+BASEDIR=$(PWD)
 CARGO=cargo
 DEUTEX=deutex
 DEUTEX_BASIC_ARGS=-v0 -rate accept
@@ -11,11 +12,12 @@ RM=$(UTIL) rm
 
 BOOTSTRAP=bootstrap/bootstrap.wad
 COLORMAP=lumps/colormap.lmp
+GENMIDI=lumps/genmidi.lmp
 PLAYPAL=lumps/playpal.lmp
 
 all: $(KLAMATH)
 
-$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(PLAYPAL) wadinfo.txt
+$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(GENMIDI) $(PLAYPAL) wadinfo.txt
 	$(RM) dist
 	@mkdir -p dist
 	$(DEUTEX) $(DEUTEX_ARGS) -iwad -build wadinfo.txt $@
@@ -32,5 +34,9 @@ $(COLORMAP): $(UTIL) $(PLAYPAL)
 	@mkdir -p lumps
 	$(UTIL) colormap < $(PLAYPAL) > $(COLORMAP)
 
-$(UTIL): $(UTIL_DIR)/src/*
+$(GENMIDI): $(UTIL) $(wildcard genmidi/*)
+	@mkdir -p lumps
+	$(UTIL) genmidi $(BASEDIR)/genmidi > $(GENMIDI)
+
+$(UTIL): $(wildcard $(UTIL_DIR)/src/*)
 	cd $(UTIL_DIR); $(CARGO) build --release

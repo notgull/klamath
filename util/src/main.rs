@@ -5,6 +5,7 @@ use std::{fs, io::Error as IoError, rc::Rc, str::FromStr};
 
 mod bootstrap;
 mod colormap;
+mod genmidi;
 mod playpal;
 
 #[derive(Debug, Clone)]
@@ -45,6 +46,16 @@ fn main() -> Result {
                 .arg(Arg::with_name("g").required(false).index(2).value_name("G"))
                 .arg(Arg::with_name("b").required(false).index(3).value_name("B")),
         )
+        .subcommand(
+            SubCommand::with_name("genmidi")
+                .about("Generates the GENMIDI lump for MIDI emulation")
+                .arg(
+                    Arg::with_name("basedir")
+                        .required(true)
+                        .index(1)
+                        .value_name("BASEDIR"),
+                ),
+        )
         .get_matches();
 
     if let Some(_) = matches.subcommand_matches("bootstrap") {
@@ -81,6 +92,11 @@ fn main() -> Result {
         };
 
         colormap::generate_colormap(rgb)?;
+
+        return Ok(());
+    } else if let Some(matches) = matches.subcommand_matches("genmidi") {
+        let basedir = matches.value_of_os("basedir").unwrap();
+        genmidi::generate_genmidi(basedir)?;
 
         return Ok(());
     }
