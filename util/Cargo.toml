@@ -1,0 +1,11 @@
+[package]
+name = "klamath-util"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+approx = "0.4"
+atty = "0.2"
+clap = "2.33"
+ordered-float = "2.2"
+tinyvec = "1.2"
