@@ -1,6 +1,5 @@
 // Apache 2.0 License
 
-use super::Octave;
 use std::{
     fs::File,
     io::{prelude::*, BufReader},
@@ -103,6 +102,7 @@ impl Voice {
                     return;
                 }
             };
+            *field = value;
         })?;
         v.name = name;
         Ok(v)

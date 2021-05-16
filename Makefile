@@ -1,4 +1,7 @@
 # Apache 2.0 License
+# 
+# This Makefile assembles all of the resources necessary to build klamath.wad and then calls DeuTeX to 
+# create the WAD.
 
 BASEDIR=$(PWD)
 CARGO=cargo
@@ -12,12 +15,13 @@ RM=$(UTIL) rm
 
 BOOTSTRAP=bootstrap/bootstrap.wad
 COLORMAP=lumps/colormap.lmp
+DMXGUS=lumps/dmxgus.lmp
 GENMIDI=lumps/genmidi.lmp
 PLAYPAL=lumps/playpal.lmp
 
 all: $(KLAMATH)
 
-$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(GENMIDI) $(PLAYPAL) wadinfo.txt
+$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) wadinfo.txt
 	$(RM) dist
 	@mkdir -p dist
 	$(DEUTEX) $(DEUTEX_ARGS) -iwad -build wadinfo.txt $@
@@ -33,6 +37,10 @@ $(BOOTSTRAP): $(UTIL) $(PLAYPAL)
 $(COLORMAP): $(UTIL) $(PLAYPAL)
 	@mkdir -p lumps
 	$(UTIL) colormap < $(PLAYPAL) > $(COLORMAP)
+
+$(DMXGUS): $(UTIL) dmxgus/dmxgus.yml
+	@mkdir -p lumps
+	$(UTIL) dmxgus $(BASEDIR)/dmxgus/dmxgus.yml > $(DMXGUS)
 
 $(GENMIDI): $(UTIL) $(wildcard genmidi/*)
 	@mkdir -p lumps

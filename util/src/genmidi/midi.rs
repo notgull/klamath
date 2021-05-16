@@ -1,5 +1,7 @@
 // Apache 2.0 License
 
+#![allow(unused)]
+
 use tinyvec::ArrayVec;
 
 /// An octave

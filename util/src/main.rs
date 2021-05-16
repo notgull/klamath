@@ -5,6 +5,7 @@ use std::{fs, io::Error as IoError, rc::Rc, str::FromStr};
 
 mod bootstrap;
 mod colormap;
+mod dmxgus;
 mod genmidi;
 mod playpal;
 
@@ -12,12 +13,20 @@ mod playpal;
 pub enum Error {
     StaticMsg(&'static str),
     Io(Rc<IoError>),
+    Yaml(Rc<serde_yaml::Error>),
 }
 
 impl From<IoError> for Error {
     #[inline]
     fn from(i: IoError) -> Error {
         Error::Io(Rc::new(i))
+    }
+}
+
+impl From<serde_yaml::Error> for Error {
+    #[inline]
+    fn from(sy: serde_yaml::Error) -> Error {
+        Error::Yaml(Rc::new(sy))
     }
 }
 
@@ -54,6 +63,16 @@ fn main() -> Result {
                         .required(true)
                         .index(1)
                         .value_name("BASEDIR"),
+                ),
+        )
+        .subcommand(
+            SubCommand::with_name("dmxgus")
+                .about("Generates the DMXGUS lump for GUS sound cards with limited memory")
+                .arg(
+                    Arg::with_name("config")
+                        .required(true)
+                        .index(1)
+                        .value_name("CONFIG"),
                 ),
         )
         .get_matches();
@@ -99,6 +118,9 @@ fn main() -> Result {
         genmidi::generate_genmidi(basedir)?;
 
         return Ok(());
+    } else if let Some(matches) = matches.subcommand_matches("dmxgus") {
+        let config = matches.value_of_os("config").unwrap();
+        return dmxgus::generate_dmxgus(config.as_ref());
     }
 
     Err(Error::StaticMsg("Did not receive any arguments."))

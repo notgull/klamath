@@ -28,7 +28,7 @@ pub fn generate_genmidi<P: AsRef<Path>>(basedir: P) -> crate::Result {
         .collect::<crate::Result<Vec<_>>>()?;
     let null_instrument = Instrument::load(&basedir.as_ref().join("dummy.sbi"), None, 0, 0, None)?;
 
-    eprintln!("Instruments: {:#?}", &instruments);
+    //    eprintln!("Instruments: {:#?}", &instruments);
 
     instruments
         .iter()

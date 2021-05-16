@@ -1,13 +1,9 @@
 // Apache 2.0 License
 
 use std::{
-    array::IntoIter as ArrayIter,
     cmp,
-    fs::File,
     io::{self, prelude::*},
     iter,
-    path::Path,
-    str::FromStr,
 };
 
 /// Generate the COLORMAP lump.
@@ -19,7 +15,7 @@ pub fn generate_colormap(dark_color: [u8; 3]) -> crate::Result {
 
     // the input should be the palette
     let stdin = io::stdin();
-    let mut cin = stdin.lock();
+    let cin = stdin.lock();
     let palette = read_palette(cin)?.collect::<crate::Result<Vec<_>>>()?;
 
     // create a list that's nothing but the dark color
@@ -74,21 +70,6 @@ fn generate_from_palette<
     ci.into_iter()
         .map(move |color| search_for_closest(pi.clone(), color))
         .collect()
-}
-
-// tint a list of colors according to another color and a brightness factor
-#[inline]
-fn tint_colors<I: IntoIterator<Item = [u8; 3]>>(
-    i: I,
-    clr: &[u8; 3],
-    factor: f32,
-) -> impl Iterator<Item = [u8; 3]> {
-    bytify(floatify(i).map(move |[r, g, b]| {
-        let a = (r + g + b) * factor;
-        let b = 255.0;
-        let intensity = if a < b { a } else { b } / 255.0;
-        [r * intensity, g * intensity, b * intensity]
-    }))
 }
 
 // given two lists of colors, blend them together
