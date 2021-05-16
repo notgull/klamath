@@ -5,6 +5,8 @@
 
 BASEDIR=$(PWD)
 CARGO=cargo
+CP=cp
+DEHACKED=dist/klamath.deh
 DEUTEX=deutex
 DEUTEX_BASIC_ARGS=-v0 -rate accept
 DEUTEX_ARGS=$(DEUTEX_BASIC_ARGS) -doom2 bootstrap/
@@ -15,16 +17,21 @@ RM=$(UTIL) rm
 
 BOOTSTRAP=bootstrap/bootstrap.wad
 COLORMAP=lumps/colormap.lmp
+DEHLUMP=lumps/dehacked.lmp
 DMXGUS=lumps/dmxgus.lmp
 GENMIDI=lumps/genmidi.lmp
 PLAYPAL=lumps/playpal.lmp
 
-all: $(KLAMATH)
+all: $(KLAMATH) $(DEHACKED)
 
-$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) wadinfo.txt
+$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DEHLUMP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) wadinfo.txt
 	$(RM) dist
 	@mkdir -p dist
 	$(DEUTEX) $(DEUTEX_ARGS) -iwad -build wadinfo.txt $@
+
+$(DEHACKED): dehacked/dehacked.deh
+	@mkdir -p dist
+	$(CP) $< $@
 
 $(PLAYPAL): $(UTIL)
 	@mkdir -p lumps
@@ -37,6 +44,9 @@ $(BOOTSTRAP): $(UTIL) $(PLAYPAL)
 $(COLORMAP): $(UTIL) $(PLAYPAL)
 	@mkdir -p lumps
 	$(UTIL) colormap < $(PLAYPAL) > $(COLORMAP)
+
+$(DEHLUMP): dehacked/dehacked.deh
+	$(CP) $< $@
 
 $(DMXGUS): $(UTIL) dmxgus/dmxgus.yml
 	@mkdir -p lumps

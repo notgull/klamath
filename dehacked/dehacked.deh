@@ -1,0 +1,337 @@
+Patch File for DeHackEd v3.0
+# Created with WhackEd4 1.2.4 BETA
+# Note: Use the pound sign ('#') to start comment lines.
+
+Doom version = 19
+Patch format = 6
+
+
+Frame 13
+Duration = 3
+
+Frame 14
+Duration = 4
+
+Frame 15
+Duration = 3
+
+Frame 16
+Duration = 2
+
+Frame 17
+Duration = 4
+
+Frame 22
+Duration = 6
+
+Frame 23
+Duration = 3
+
+Frame 24
+Duration = 3
+
+Frame 25
+Duration = 2
+
+Frame 26
+Duration = 3
+
+Frame 27
+Duration = 3
+
+Frame 28
+Duration = 2
+
+Frame 29
+Duration = 3
+
+Frame 30
+Duration = 3
+
+Frame 31
+Duration = 2
+
+Text 405 400
+YOU HAVE ENTERED DEEPLY INTO THE INFESTED
+STARPORT. BUT SOMETHING IS WRONG. THE
+MONSTERS HAVE BROUGHT THEIR OWN REALITY
+WITH THEM, AND THE STARPORT'S TECHNOLOGY
+IS BEING SUBVERTED BY THEIR PRESENCE.
+
+AHEAD, YOU SEE AN OUTPOST OF HELL, A
+FORTIFIED ZONE. IF YOU CAN GET PAST IT,
+YOU CAN PENETRATE INTO THE HAUNTED HEART
+OF THE STARBASE AND FIND THE CONTROLLING
+SWITCH WHICH HOLDS EARTH'S POPULATION
+HOSTAGE.After fighting through the armies of Reno,
+you arrive at the base of Zirconium Tower.
+You know that by now they're activating the
+Hummingbird Engine for the first time, which
+will surely spell doom for the planet, and,
+more importantly, buttered popcorn.
+
+You load a shell into your trusty shotgun.
+The tower seems to shift about, like a
+living organism. You kick open its front
+door.
+
+Shoot to kill.
+Text 617 491
+YOU HAVE WON! YOUR VICTORY HAS ENABLED
+HUMANKIND TO EVACUATE EARTH AND ESCAPE
+THE NIGHTMARE.  NOW YOU ARE THE ONLY
+HUMAN LEFT ON THE FACE OF THE PLANET.
+CANNIBAL MUTATIONS, CARNIVOROUS ALIENS,
+AND EVIL SPIRITS ARE YOUR ONLY NEIGHBORS.
+YOU SIT BACK AND WAIT FOR DEATH, CONTENT
+THAT YOU HAVE SAVED YOUR SPECIES.
+
+BUT THEN, EARTH CONTROL BEAMS DOWN A
+MESSAGE FROM SPACE: "SENSORS HAVE LOCATED
+THE SOURCE OF THE ALIEN INVASION. IF YOU
+GO THERE, YOU MAY BE ABLE TO BLOCK THEIR
+ENTRY.  THE ALIEN BASE IS IN THE HEART OF
+YOUR OWN HOME CITY, NOT FAR FROM THE
+STARPORT." SLOWLY AND PAINFULLY YOU GET
+UP AND RETURN TO THE FRAY.The Hummingbird Engine crumbles before
+you. You've won. The conspiracy to
+destroy the world has failed.
+
+Before you can celebrate, you see a
+ghastly apparition rise from the
+machine. It gives an infernal laugh
+and then flies away... in the direction
+of the shopping mall?
+
+Whatever it wants, you know it can't be
+good. Steeling your resolve, you break
+into a sprint. The beast still cackles 
+as it flies through the sky, spreading
+its influence over the rooftops.
+
+Time to finish this fight.
+Text 312 312
+YOU ARE AT THE CORRUPT HEART OF THE CITY,
+SURROUNDED BY THE CORPSES OF YOUR ENEMIES.
+YOU SEE NO WAY TO DESTROY THE CREATURES'
+ENTRYWAY ON THIS SIDE, SO YOU CLENCH YOUR
+TEETH AND PLUNGE THROUGH IT.
+
+THERE MUST BE A WAY TO CLOSE IT ON THE
+OTHER SIDE. WHAT DO YOU CARE IF YOU'VE
+GOT TO GO THROUGH HELL TO GET TO IT?As you descend deeper into the ruins, you
+enter some kind of new realm, filled with
+hundreds of the ghast you just defeated!
+Ducking and hiding, you overhear that they
+are preparing to invade Earth!
+
+You know that, by the time you get help,
+it will be far too late. Your only option is
+to stop this invasion now.
+Text 494 491
+THE HORRENDOUS VISAGE OF THE BIGGEST
+DEMON YOU'VE EVER SEEN CRUMBLES BEFORE
+YOU, AFTER YOU PUMP YOUR ROCKETS INTO
+HIS EXPOSED BRAIN. THE MONSTER SHRIVELS
+UP AND DIES, ITS THRASHING LIMBS
+DEVASTATING UNTOLD MILES OF HELL'S
+SURFACE.
+
+YOU'VE DONE IT. THE INVASION IS OVER.
+EARTH IS SAVED. HELL IS A WRECK. YOU
+WONDER WHERE BAD FOLKS WILL GO WHEN THEY
+DIE, NOW. WIPING THE SWEAT FROM YOUR
+FOREHEAD YOU BEGIN THE LONG TREK BACK
+HOME. REBUILDING EARTH OUGHT TO BE A
+LOT MORE FUN THAN RUINING IT WAS.
+After you destroy the commander of the
+ghastly forces, the remaining ghasts
+dissolve into vapor. The army is no
+more. You've won!
+
+You climb back up to the surface. You
+guess that everyone who was attacking
+you was under their control, since the
+police walk by you without batting
+an eye. No one else will ever know that
+you saved the city from utter destruction.
+
+You discard your weapons and trot home.
+Maybe you'll watch soccer. Maybe 
+you'll run into another conspiracy
+on the way there.
+Text 164 163
+CONGRATULATIONS, YOU'VE FOUND THE SECRET
+LEVEL! LOOKS LIKE IT'S BEEN BUILT BY
+HUMANS, RATHER THAN DEMONS. YOU WONDER
+WHO THE INMATES OF THIS CORNER OF HELL
+WILL BE.The wall falls open, revealing a chamber
+that hasn't been opened for centuries.
+You pause your pursuit to check it out.
+There's bound to be something good in
+here.
+Text 92 94
+CONGRATULATIONS, YOU'VE FOUND THE
+SUPER SECRET LEVEL!  YOU'D BETTER
+BLAZE THROUGH THIS ONE!
+The wall falls open, revealing
+a passage to... CostMart? Eh,
+you needed to resupply anyways...
+Text 9 7
+ZOMBIEMANOfficer
+Text 11 7
+SHOTGUN GUYPrivate
+Text 17 13
+HEAVY WEAPON DUDESquid Captain
+Text 3 3
+IMPBPG
+Text 5 5
+DEMONRobot
+Text 9 7
+LOST SOULSeagull
+Text 9 10
+CACODEMONApparition
+Text 11 9
+HELL KNIGHTMechasuit
+Text 13 9
+BARON OF HELLPossessed
+Text 11 11
+ARACHNOTRONCubic Being
+Text 14 14
+PAIN ELEMENTALGhast Summoner
+Text 8 11
+REVENANTPlasma Cpl.
+Text 8 6
+MANCUBUSTurtle
+Text 9 9
+ARCH-VILECommander
+Text 21 20
+THE SPIDER MASTERMINDPossessed Battletank
+Text 14 12
+THE CYBERDEMONGeneral Zinc
+Text 8 7
+OUR HEROKlamath
+Text 20 19
+Picked up the armor.Picked up the vest.
+Text 24 26
+Picked up the MegaArmor!Picked up the Force Field!
+Text 25 22
+Picked up a health bonus.Picked up some snacks.
+Text 25 27
+Picked up an armor bonus.Evidence! Need to see this!
+Text 12 15
+Supercharge!Treasure Trove!
+Text 11 11
+MegaSphere!Motherlode!
+Text 41 40
+Picked up a medikit that you REALLY need!Picked up a meal that you REALLY needed!
+Text 20 23
+Picked up a medikit.Picked up a square meal
+Text 16 13
+Invulnerability!Amphetamines!
+Text 8 9
+Berserk!Steroids!
+Text 20 18
+Partial InvisibilityVery Strong Magnet
+Text 24 18
+Radiation Shielding SuitHeavy Rubber Boots
+Text 17 10
+Computer Area MapBlueprints
+Text 25 7
+Light Amplification VisorLantern
+Text 17 19
+Picked up a clip.Found some bullets.
+Text 27 24
+Picked up a box of bullets.Found a clip of bullets.
+Text 19 15
+Picked up a rocket.Found a rocket.
+Text 27 23
+Picked up a box of rockets.Found a box of rockets.
+Text 25 26
+Picked up an energy cell.Found a gasoline canister.
+Text 30 24
+Picked up an energy cell pack.Found a gasoline barrel.
+Text 27 26
+Picked up 4 shotgun shells.Found some shotgun shells.
+Text 34 22
+Picked up a box of shotgun shells.Found a box of shells.
+Text 34 21
+Picked up a backpack full of ammo!Found the fanny pack!
+Text 30 24
+You got the BFG9000!  Oh, yes.Found the hunting rifle!
+Text 21 23
+You got the chaingun!Found a submachine gun!
+Text 28 19
+A chainsaw!  Find some meat!Found the Scorcher!
+Text 28 24
+You got the rocket launcher!Found a rocket launcher!
+Text 23 21
+You got the plasma gun!Found a flamethrower!
+Text 20 18
+You got the shotgun!Found a sawed-off!
+Text 26 22
+You got the super shotgun!Found a double-barrel!
+Text 17 18
+level 1: entrywaylevel 1: Arrested!
+Text 19 15
+level 2: underhallslevel 2: Museum
+Text 20 20
+level 3: the gantletlevel 3: Run 'N' Gun
+Text 18 18
+level 4: the focuslevel 4: Warehouse
+Text 26 20
+level 5: the waste tunnelslevel 5: Sewer Panic
+Text 20 21
+level 6: the crusherlevel 6: Soccer Arena
+Text 20 18
+level 7: dead simplelevel 7: The Tower
+Text 25 25
+level 8: tricks and trapslevel 8: New Developments
+Text 16 19
+level 9: the pitlevel 9: The Office
+Text 24 25
+level 10: refueling baselevel 10: Executive Suite
+Text 29 28
+level 11: 'o' of destruction!level 11: Hummingbird Engine
+Text 21 21
+level 12: the factorylevel 12: Rooftop Hop
+Text 18 19
+level 13: downtownlevel 13: Reno Mall
+Text 25 24
+level 14: the inmost denslevel 14: The Lost Ruins
+Text 25 27
+level 15: industrial zonelevel 15: Gladitorial Field
+Text 17 18
+level 16: suburbslevel 16: A Castle
+Text 19 16
+level 17: tenementslevel 17: S.O.L.
+Text 23 23
+level 18: the courtyardlevel 18: Mining Tunnel
+Text 21 19
+level 19: the citadellevel 19: Lost City
+Text 17 18
+level 20: gotcha!level 20: Gateway!
+Text 17 17
+level 21: nirvanalevel 21: Inferno
+Text 23 21
+level 22: the catacombslevel 22: Old Outpost
+Text 24 22
+level 23: barrels o' funlevel 23: Wizard Tower
+Text 19 16
+level 24: the chasmlevel 24: Armory
+Text 20 21
+level 25: bloodfallslevel 25: Enemy Lines
+Text 29 31
+level 26: the abandoned mineslevel 26: Invasion Staging Area
+Text 23 23
+level 27: monster condolevel 27: Hell's Center
+Text 26 21
+level 28: the spirit worldlevel 28: Battlefield
+Text 24 23
+level 29: the living endlevel 29: King's Palace
+Text 21 20
+level 30: icon of sinlevel 30: King Ghast
+Text 21 22
+level 31: wolfensteinlevel 31: Secret Vault
+Text 16 19
+level 32: grosselevel 32: Cash Mart
