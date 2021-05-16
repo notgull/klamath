@@ -11,6 +11,9 @@ DEUTEX=deutex
 DEUTEX_BASIC_ARGS=-v0 -rate accept
 DEUTEX_ARGS=$(DEUTEX_BASIC_ARGS) -doom2 bootstrap/
 KLAMATH=dist/klamath.wad
+MANUAL=dist/manual.pdf
+PDFTEX=pdftex
+UPLTEMPL=dist/klamath.txt
 UTIL_DIR=util
 UTIL=$(UTIL_DIR)/target/release/klamath-util
 RM=$(UTIL) rm
@@ -22,7 +25,7 @@ DMXGUS=lumps/dmxgus.lmp
 GENMIDI=lumps/genmidi.lmp
 PLAYPAL=lumps/playpal.lmp
 
-all: $(KLAMATH) $(DEHACKED)
+all: $(KLAMATH) $(DEHACKED) $(MANUAL) $(UPLTEMPL)
 
 $(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DEHLUMP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) wadinfo.txt
 	$(RM) dist
@@ -30,6 +33,10 @@ $(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DEHLUMP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) 
 	$(DEUTEX) $(DEUTEX_ARGS) -iwad -build wadinfo.txt $@
 
 $(DEHACKED): dehacked/dehacked.deh
+	@mkdir -p dist
+	$(CP) $< $@
+
+$(UPLTEMPL): klamath.txt
 	@mkdir -p dist
 	$(CP) $< $@
 
@@ -58,3 +65,7 @@ $(GENMIDI): $(UTIL) $(wildcard genmidi/*)
 
 $(UTIL): $(wildcard $(UTIL_DIR)/src/*)
 	cd $(UTIL_DIR); $(CARGO) build --release
+
+#$(MANUAL): manual/manual.tex
+#	@mkdir -p dist
+#	$(PDFTEX) -synctex=1 -interaction=nonstopmode $< --output-directory=dist
