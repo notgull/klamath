@@ -1,4 +1,6 @@
 bootstrap/bootstrap.wad
 dist
+flats/
 lumps/
+patches/
 util/target

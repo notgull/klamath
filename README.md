@@ -25,5 +25,5 @@ information.
 This project contains elements borrowed from the FREEDOOM project. These elements are licensed under the BSD 3-Clause
 license. See the Freedoom repository for more information.
 
-This project also contains assets under other, compatible licenses. See `materials/matinfo.toml` for information
+This project also contains assets under other, compatible licenses. See `materials/matinfo.yml` for information
 regarding those licenses.
