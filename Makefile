@@ -43,9 +43,9 @@ $(UPLTEMPL): klamath.txt
 	@mkdir -p dist
 	$(CP) $< $@
 
-$(PLAYPAL): $(UTIL)
+$(PLAYPAL): $(UTIL) playpal/playpal.lmp
 	@mkdir -p lumps
-	$(UTIL) playpal > $@
+	$(UTIL) playpal playpal/playpal.lmp > $@
 
 $(BOOTSTRAP): $(UTIL) $(PLAYPAL)
 	@mkdir -p bootstrap

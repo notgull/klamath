@@ -6,7 +6,7 @@ use std::{
     io::prelude::*,
     path::PathBuf,
     sync::{
-        atomic::{AtomicU32, Ordering},
+        atomic::{AtomicU16, Ordering},
         Arc,
     },
 };
@@ -47,7 +47,7 @@ pub struct Patch {
     pub name: Arc<str>,
     pub mat: Arc<Material>,
     pub transforms: Vec<Transform>,
-    index: AtomicU32,
+    index: AtomicU16,
 }
 
 impl Patch {
@@ -58,7 +58,7 @@ impl Patch {
     }
 
     #[inline]
-    pub fn index(&self) -> u32 {
+    pub fn index(&self) -> u16 {
         self.index.load(Ordering::SeqCst)
     }
 }
@@ -69,6 +69,8 @@ pub struct Texture {
     pub width: u16,
     pub height: u16,
     pub patches: Vec<(Arc<Patch>, i16, i16)>,
+    pub hscale: Option<f32>,
+    pub vscale: Option<f32>,
 }
 
 impl From<MatinfoSD> for Matinfo {
@@ -121,7 +123,7 @@ impl From<MatinfoSD> for Matinfo {
                             panic!("patch: cannot find material with name {}", &mat)
                         }),
                         transforms: transforms.unwrap_or(vec![]),
-                        index: AtomicU32::new(std::u32::MAX),
+                        index: AtomicU16::new(std::u16::MAX),
                     }),
                 )
             })
@@ -135,12 +137,20 @@ impl From<MatinfoSD> for Matinfo {
                     TextureSD {
                         size: (width, height),
                         patches: texture_patches,
+                        scale,
                     },
                 )| {
+                    let (hscale, vscale) = match scale {
+                        None => (None, None),
+                        Some((h, v)) => (Some(h), Some(v)),
+                    };
+
                     Texture {
                         name,
                         width,
                         height,
+                        hscale,
+                        vscale,
                         patches: texture_patches
                             .into_iter()
                             .map(|(n, w, h)| {
@@ -197,6 +207,7 @@ struct PatchSD {
 #[derive(Debug, serde::Deserialize)]
 struct TextureSD {
     size: (u16, u16),
+    scale: Option<(f32, f32)>,
     patches: Vec<(String, i16, i16)>,
 }
 

@@ -6,6 +6,36 @@ Doom version = 19
 Patch format = 6
 
 
+Thing 2 (Trooper)
+Hit points = 45
+Reaction time = 2
+
+Thing 3 (Sargeant)
+Hit points = 75
+Reaction time = 3
+
+Thing 6 (Revenant)
+Reaction time = 3
+Speed = 20
+Height = 7995392
+
+Thing 9 (Mancubus)
+Hit points = 650
+Speed = 4
+
+Thing 11 (Chaingun Sargeant)
+Hit points = 135
+Reaction time = 2
+
+Thing 12 (Imp)
+Hit points = 100
+
+Thing 36 (BFG projectile)
+Speed = 9830400
+Width = 196608
+Height = 196608
+Missile damage = 200
+
 Frame 13
 Duration = 3
 
@@ -50,6 +80,257 @@ Duration = 3
 
 Frame 31
 Duration = 2
+
+Frame 36
+Next frame = 38
+
+Frame 37
+Duration = 11
+Next frame = 292
+
+Frame 39
+Duration = 3
+
+Frame 40
+Duration = 3
+
+Frame 41
+Duration = 5
+
+Frame 42
+Duration = 5
+
+Frame 43
+Duration = 5
+
+Frame 44
+Duration = 3
+
+Frame 52
+Duration = 3
+
+Frame 53
+Duration = 3
+
+Frame 84
+Duration = 3
+
+Frame 85
+Sprite subnumber = 0
+Duration = 0
+Next frame = 287
+
+Frame 86
+Sprite subnumber = 0
+Duration = 11
+Next frame = 37
+
+Frame 87
+Duration = 7
+
+Frame 88
+Duration = 6
+
+Frame 89
+Duration = 5
+
+Frame 285
+Duration = 20
+Next frame = 299
+
+Frame 286
+Duration = 0
+
+Frame 287
+Duration = 0
+
+Frame 288
+Duration = 0
+
+Frame 289
+Duration = 0
+
+Frame 290
+Duration = 0
+
+Frame 291
+Duration = 0
+Next frame = 294
+
+Frame 292
+Duration = 17
+
+Frame 293
+Duration = 17
+Next frame = 87
+
+Frame 294
+Duration = 0
+
+Frame 295
+Duration = 0
+
+Frame 296
+Duration = 0
+
+Frame 297
+Duration = 0
+
+Frame 298
+Duration = 0
+Next frame = 300
+
+Frame 299
+Next frame = 310
+
+Frame 300
+Duration = 0
+
+Frame 301
+Duration = 0
+
+Frame 302
+Duration = 0
+
+Frame 303
+Duration = 0
+
+Frame 304
+Duration = 0
+
+Frame 305
+Duration = 0
+
+Frame 306
+Duration = 0
+
+Frame 307
+Duration = 0
+
+Frame 308
+Duration = 0
+
+Frame 309
+Duration = 0
+Next frame = 86
+
+Frame 359
+Duration = 2
+Next frame = 127
+
+Frame 485
+Duration = 4
+
+Frame 486
+Duration = 4
+
+Frame 487
+Duration = 4
+
+Weapon 6 (BFG 9000)
+Ammo type = 0
+
+Misc 0
+BFG Cells/Shot = 21
+
+Pointer 65 (Frame 85)
+Codep Frame = 14
+
+Pointer 66 (Frame 86)
+Codep Frame = 60
+
+Pointer 70 (Frame 119)
+Codep Frame = 1
+
+Pointer 137 (Frame 273)
+Codep Frame = 783
+
+Pointer 143 (Frame 286)
+Codep Frame = 14
+
+Pointer 144 (Frame 287)
+Codep Frame = 14
+
+Pointer 145 (Frame 288)
+Codep Frame = 14
+
+Pointer 146 (Frame 289)
+Codep Frame = 14
+
+Pointer 147 (Frame 290)
+Codep Frame = 14
+
+Pointer 148 (Frame 291)
+Codep Frame = 14
+
+Pointer 149 (Frame 292)
+Codep Frame = 39
+
+Pointer 150 (Frame 293)
+Codep Frame = 41
+
+Pointer 151 (Frame 294)
+Codep Frame = 14
+
+Pointer 152 (Frame 295)
+Codep Frame = 14
+
+Pointer 153 (Frame 296)
+Codep Frame = 14
+
+Pointer 154 (Frame 297)
+Codep Frame = 14
+
+Pointer 155 (Frame 298)
+Codep Frame = 14
+
+Pointer 157 (Frame 300)
+Codep Frame = 14
+
+Pointer 158 (Frame 301)
+Codep Frame = 14
+
+Pointer 159 (Frame 302)
+Codep Frame = 14
+
+Pointer 160 (Frame 303)
+Codep Frame = 14
+
+Pointer 161 (Frame 304)
+Codep Frame = 14
+
+Pointer 162 (Frame 305)
+Codep Frame = 14
+
+Pointer 163 (Frame 306)
+Codep Frame = 14
+
+Pointer 164 (Frame 307)
+Codep Frame = 14
+
+Pointer 165 (Frame 308)
+Codep Frame = 14
+
+Pointer 166 (Frame 309)
+Codep Frame = 14
+
+Pointer 210 (Frame 377)
+Codep Frame = 685
+
+Pointer 213 (Frame 380)
+Codep Frame = 685
+
+Pointer 216 (Frame 383)
+Codep Frame = 685
+
+Pointer 380 (Frame 685)
+Codep Frame = 377
+
+Pointer 382 (Frame 687)
+Codep Frame = 380
+
+Pointer 384 (Frame 689)
+Codep Frame = 383
 
 Text 405 400
 YOU HAVE ENTERED DEEPLY INTO THE INFESTED

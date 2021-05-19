@@ -43,7 +43,16 @@ fn main() -> Result {
             SubCommand::with_name("bootstrap")
                 .about("Generates the bootstrap.wad file necessary to get DeuTeX to run"),
         )
-        .subcommand(SubCommand::with_name("playpal").about("Generates the PLAYPAL lump"))
+        .subcommand(
+            SubCommand::with_name("playpal")
+                .about("Generates the PLAYPAL lump")
+                .arg(
+                    Arg::with_name("palbase")
+                        .index(1)
+                        .value_name("BASE")
+                        .required(false),
+                ),
+        )
         .subcommand(
             SubCommand::with_name("rm")
                 .about("Removes a specific file or directory, but doesn't return an error")
@@ -132,8 +141,9 @@ fn main() -> Result {
     if let Some(_) = matches.subcommand_matches("bootstrap") {
         bootstrap::write_bootstrap()?;
         return Ok(());
-    } else if let Some(_) = matches.subcommand_matches("playpal") {
-        playpal::generate_palette()?;
+    } else if let Some(matches) = matches.subcommand_matches("playpal") {
+        let p: Option<PathBuf> = matches.value_of_os("palbase").map(|p| p.into());
+        playpal::generate_palette(p.as_deref())?;
         return Ok(());
     } else if let Some(matches) = matches.subcommand_matches("rm") {
         for file in matches.values_of_os("files").unwrap() {

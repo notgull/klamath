@@ -2,13 +2,18 @@
 
 use std::{
     array::IntoIter as ArrayIter,
-    io::{self, prelude::*},
+    fs::File,
+    io::{self, prelude::*, BufReader},
+    path::Path,
 };
 
 /// Generate the color pallete
 #[inline]
-pub fn generate_palette() -> crate::Result {
-    let palette: Vec<[f32; 3]> = default_palette().collect();
+pub fn generate_palette<P: AsRef<Path>>(inpal: Option<P>) -> crate::Result {
+    let palette: Vec<[f32; 3]> = match inpal {
+        None => default_palette().collect(),
+        Some(inpal) => load_palette(inpal.as_ref())?,
+    };
     let expanded_palette: Vec<[u8; 3]> = palette
         .iter()
         .copied()
@@ -74,6 +79,23 @@ fn write_palette<W: Write>(w: &mut W, palette: impl IntoIterator<Item = [u8; 3]>
 }
 
 #[inline]
+fn load_palette(path: &Path) -> crate::Result<Vec<[f32; 3]>> {
+    let mut bytes = vec![];
+    let mut f = BufReader::new(File::open(path)?);
+    f.read_to_end(&mut bytes)?;
+
+    let mut result = Vec::with_capacity(bytes.len() / 3);
+    for i in (0..bytes.len()).step_by(3) {
+        result.push([
+            bytes[i] as f32 / 255.0,
+            bytes[i + 1] as f32 / 255.0,
+            bytes[i + 2] as f32 / 255.0,
+        ]);
+    }
+    Ok(result)
+}
+
+#[inline]
 fn default_palette() -> impl Iterator<Item = [f32; 3]> {
     // we add the important colors here:
     static IMPORTANT_COLORS: &[([f32; 3], usize)] = &[
@@ -81,14 +103,14 @@ fn default_palette() -> impl Iterator<Item = [f32; 3]> {
         ([0.0, 0.0, 0.0], 1),
         // 47 shades of white
         ([1.0, 1.0, 1.0], 47),
-        // 16 shades of red
-        ([1.0, 0.0, 0.0], 16),
+        // 32 shades of red
+        ([1.0, 0.0, 0.0], 32),
         // 16 shades of orange
         ([1.0, 0.64, 0.0], 16),
         // 16 shades of yellow
         ([1.0, 1.0, 0.0], 16),
-        // 16 shades of green
-        ([0.0, 1.0, 0.0], 16),
+        // 32 shades of green
+        ([0.0, 1.0, 0.0], 32),
         // 16 shades of blue
         ([0.0, 0.0, 1.0], 16),
         // 16 shades of purple
@@ -97,10 +119,6 @@ fn default_palette() -> impl Iterator<Item = [f32; 3]> {
         ([0.96, 0.73, 0.28], 64),
         // 16 shades of pink
         ([1.0, 0.63, 0.97], 16),
-        // 16 shades of rusty metal
-        ([1.0, 0.74, 0.75], 16),
-        // 16 shades of acquamrine
-        ([0.0, 1.0, 1.0], 16),
     ];
 
     let collective_len: usize = IMPORTANT_COLORS
