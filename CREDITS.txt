@@ -1,0 +1,9 @@
+=== CREDITS ===
+
+The following images come from cc0textures.com, and are licensed under the CC0 1.0 License.
+
+grass04 (grass004)
+wood035 (wood035)
+
+All other non-scripting resources are created by me, notgull, and are hereby released under 
+the Creative Commons Attribution-ShareAlike International 4.0 license.

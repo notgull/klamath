@@ -9,8 +9,18 @@ COLORMAP
 GENMIDI
 DMXGUS
 DEHACKED
-TEXTURE1
-PNAMES
 
+[texture1]
+TEXTURE1
+
+; Map WADs
 [levels]
 map01
+
+; Patches
+[patches]
+WOOD035
+
+; Flats
+[flats]
+GRASS04

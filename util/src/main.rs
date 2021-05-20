@@ -9,7 +9,6 @@ mod colormap;
 mod dmxgus;
 mod genmidi;
 mod playpal;
-mod textures;
 
 #[derive(Debug, Clone)]
 pub enum Error {
@@ -87,57 +86,6 @@ fn main() -> Result {
                 ),
         )
         .subcommand(
-            SubCommand::with_name("texture1")
-                .about("Generates the TEXTURE1 and PNAMES lumps")
-                .arg(
-                    Arg::with_name("pnames")
-                        .index(1)
-                        .required(true)
-                        .value_name("PNAMES"),
-                )
-                .arg(
-                    Arg::with_name("texture1")
-                        .index(2)
-                        .required(true)
-                        .value_name("TEXTURE1"),
-                )
-                .arg(
-                    Arg::with_name("flats")
-                        .short("f")
-                        .long("flats")
-                        .required(true)
-                        .value_name("FLATS"),
-                )
-                .arg(
-                    Arg::with_name("patches")
-                        .short("p")
-                        .long("patches")
-                        .required(true)
-                        .value_name("PATCHES"),
-                )
-                .arg(
-                    Arg::with_name("wadin")
-                        .short("i")
-                        .long("inwad")
-                        .required(true)
-                        .value_name("INWAD"),
-                )
-                .arg(
-                    Arg::with_name("wadout")
-                        .short("o")
-                        .long("outwad")
-                        .required(true)
-                        .value_name("OUTWAD"),
-                )
-                .arg(
-                    Arg::with_name("matdir")
-                        .short("m")
-                        .long("matdir")
-                        .required(true)
-                        .value_name("MATDIR"),
-                ),
-        )
-        .subcommand(
             SubCommand::with_name("blenderscript")
                 .arg(
                     Arg::with_name("model")
@@ -206,24 +154,6 @@ fn main() -> Result {
     } else if let Some(matches) = matches.subcommand_matches("dmxgus") {
         let config = matches.value_of_os("config").unwrap();
         return dmxgus::generate_dmxgus(config.as_ref());
-    } else if let Some(matches) = matches.subcommand_matches("texture1") {
-        let pnames = matches.value_of_os("pnames").unwrap();
-        let texture1 = matches.value_of_os("texture1").unwrap();
-        let flats: PathBuf = matches.value_of_os("flats").unwrap().into();
-        let patches: PathBuf = matches.value_of_os("patches").unwrap().into();
-        let wadinfo_in = matches.value_of_os("wadin").unwrap();
-        let wadinfo_out = matches.value_of_os("wadout").unwrap();
-        let matdir = matches.value_of_os("matdir").unwrap();
-
-        return textures::process_textures(
-            pnames.as_ref(),
-            texture1.as_ref(),
-            patches,
-            flats,
-            wadinfo_in.as_ref(),
-            wadinfo_out.as_ref(),
-            matdir.as_ref(),
-        );
     } else if let Some(matches) = matches.subcommand_matches("blenderscript") {
         let model = matches.value_of_os("model").unwrap();
         let start = usize::from_str(matches.value_of("start").unwrap()).unwrap();

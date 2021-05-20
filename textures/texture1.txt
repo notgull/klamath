@@ -1,0 +1,9 @@
+; Apache 2.0 License
+; 
+; Texture specification for DeuTex
+; 
+; TextureName		Width	Height
+; *	PatchName	XOffset	YOffset
+
+WOOD035		128	128
+*	WOOD035	0	0

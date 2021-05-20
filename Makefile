@@ -23,10 +23,8 @@ COLORMAP=lumps/colormap.lmp
 DEHLUMP=lumps/dehacked.lmp
 DMXGUS=lumps/dmxgus.lmp
 GENMIDI=lumps/genmidi.lmp
-PNAMES=lumps/pnames.lmp
 PLAYPAL=lumps/playpal.lmp
-TEXTURE1=lumps/texture1.lmp
-WADINFO=dist/wadinfo.txt
+WADINFO=wadinfo.txt
 
 LEVELS=levels/map01.wad
 
@@ -34,7 +32,7 @@ include models/Makefile
 
 all: $(KLAMATH) $(DEHACKED) $(UPLTEMPL)
 
-$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DEHLUMP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) $(PNAMES) $(WADINFO)
+$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DEHLUMP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) $(WADINFO)
 	$(RM) $(KLAMATH)
 	@mkdir -p dist
 	$(DEUTEX) $(DEUTEX_ARGS) -iwad -build $(WADINFO) $@
@@ -69,10 +67,6 @@ $(DMXGUS): $(UTIL) dmxgus/dmxgus.yml
 $(GENMIDI): $(UTIL) $(wildcard genmidi/*)
 	@mkdir -p lumps
 	$(UTIL) genmidi $(BASEDIR)/genmidi > $(GENMIDI)
-
-$(PNAMES) $(TEXTURE1) $(WADINFO): $(UTIL) $(wildcard materials/*) wadinfo_in.txt
-	@mkdir -p dist
-	$(UTIL) texture1 $(PNAMES) $(TEXTURE1) -f $(BASEDIR)/flats -p $(BASEDIR)/patches -i wadinfo_in.txt -o $(WADINFO) -m $(BASEDIR)/materials < materials/matinfo.yml
 
 $(UTIL): $(wildcard $(UTIL_DIR)/src/*)
 	cd $(UTIL_DIR); $(CARGO) build --release
