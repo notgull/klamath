@@ -7,6 +7,7 @@ edition = "2018"
 approx = "0.4"
 atty = "0.2"
 clap = "2.33"
+dirs = "3"
 serde = { version = "1", features = ["derive"] }
 serde_yaml = "0.8"
 tinyvec = { version = "1.2", features = ["alloc"] }

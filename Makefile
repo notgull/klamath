@@ -28,6 +28,10 @@ PLAYPAL=lumps/playpal.lmp
 TEXTURE1=lumps/texture1.lmp
 WADINFO=dist/wadinfo.txt
 
+LEVELS=levels/map01.wad
+
+include models/Makefile
+
 all: $(KLAMATH) $(DEHACKED) $(UPLTEMPL)
 
 $(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DEHLUMP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) $(PNAMES) $(WADINFO)

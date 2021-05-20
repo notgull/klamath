@@ -3,6 +3,7 @@
 use clap::{App, Arg, SubCommand};
 use std::{fs, io::Error as IoError, path::PathBuf, str::FromStr, sync::Arc};
 
+mod blenderscript;
 mod bootstrap;
 mod colormap;
 mod dmxgus;
@@ -136,6 +137,28 @@ fn main() -> Result {
                         .value_name("MATDIR"),
                 ),
         )
+        .subcommand(
+            SubCommand::with_name("blenderscript")
+                .arg(
+                    Arg::with_name("model")
+                        .index(1)
+                        .required(true)
+                        .value_name("MODEL"),
+                )
+                .arg(
+                    Arg::with_name("start")
+                        .index(2)
+                        .required(true)
+                        .value_name("START"),
+                )
+                .arg(
+                    Arg::with_name("end")
+                        .index(3)
+                        .required(true)
+                        .value_name("END"),
+                )
+                .arg(Arg::with_name("outfiles").multiple(true).min_values(1)),
+        )
         .get_matches();
 
     if let Some(_) = matches.subcommand_matches("bootstrap") {
@@ -200,6 +223,19 @@ fn main() -> Result {
             wadinfo_in.as_ref(),
             wadinfo_out.as_ref(),
             matdir.as_ref(),
+        );
+    } else if let Some(matches) = matches.subcommand_matches("blenderscript") {
+        let model = matches.value_of_os("model").unwrap();
+        let start = usize::from_str(matches.value_of("start").unwrap()).unwrap();
+        let end = usize::from_str(matches.value_of("end").unwrap()).unwrap();
+        if (end - start + 1) != matches.occurrences_of("outfiles") as usize {
+            return Err(Error::StaticMsg("Frames do not match outfiles"));
+        }
+        return blenderscript::render_blender(
+            model.as_ref(),
+            start,
+            end,
+            matches.values_of_os("outfiles").unwrap(),
         );
     }
 

@@ -11,3 +11,6 @@ DMXGUS
 DEHACKED
 TEXTURE1
 PNAMES
+
+[levels]
+map01
