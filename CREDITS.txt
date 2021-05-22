@@ -2,8 +2,23 @@
 
 The following images come from cc0textures.com, and are licensed under the CC0 1.0 License.
 
-grass04 (grass004)
-wood035 (wood035)
+grass1 (grass004)
+rrock04 (tiles093)
+
+wall40_1 (wood035)
+wall40_2 (ground039)
+rw22_# (rock035)
+rw27_# (rock020)
+rw23_#, rw38_4 (tiles089)
+
+The following images are sourced from commons.wikimedia.org, under a variety of licenses:
+
+bodies.png comes from https://commons.wikimedia.org/wiki/File:Bison_skull_pile_edit.jpg and is public domain
+bfall# comes from https://commons.wikimedia.org/wiki/File:%D0%A1%D1%80%D1%96%D0%B1%D0%BB%D1%8F%D1%81%D1%82%D1%96_%D0%B2%D0%BE%D0%B4%D0%BE%D1%81%D0%BF%D0%B0%D0%B4%D0%B8.webm and is licensed under CC-BY-SA 3.0
+door2_1 comes from https://commons.wikimedia.org/wiki/File:Golden_gate_of_Ueno_T%C5%8Dsh%C5%8D-g%C5%AB_Shinto_shrine,_Tokyo,_Japan.jpg and is licensed under CC-BY-SA 4.0
+door2_4, door9_# come from https://commons.wikimedia.org/wiki/File:Trier,_Liebfrauen_-_Westportal_(2012-10-09).JPG and is licensed under CC-BY-SA 2.0
+door11_3 comes from https://commons.wikimedia.org/wiki/File:Trier_Domfreihof_BW_2018-05-12_16-55-05.jpg and is licensed under CC-BY-SA 3.0
+rw34_# comes from https://commons.wikimedia.org/wiki/File:60_Cell_24_Volt_Solar_Panel_Clipart_foruse_in_wiring_diagrams_and_charts.jpg and is licensed under CC0
 
 All other non-scripting resources are created by me, notgull, and are hereby released under 
 the Creative Commons Attribution-ShareAlike International 4.0 license.

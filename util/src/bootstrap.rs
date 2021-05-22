@@ -4,6 +4,7 @@ use std::{
     array::IntoIter as ArrayIter,
     borrow::Cow,
     io::{self, prelude::*},
+    iter,
 };
 use tinyvec::ArrayVec;
 
@@ -32,15 +33,15 @@ pub fn write_bootstrap() -> crate::Result {
     // padded
     let lumps: [Lump; NUM_LUMPS] = [
         Lump {
-            name: b"PLAYPAL\0",
+            name: "PLAYPAL",
             data: playpal_bytes.into(),
         },
         Lump {
-            name: b"TEXTURE1",
+            name: "TEXTURE1",
             data: (&[0u8, 0, 0, 0]).as_ref().into(),
         },
         Lump {
-            name: b"PNAMES\0\0",
+            name: "PNAMES",
             data: (&[1u8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]).as_ref().into(),
         },
     ];
@@ -65,8 +66,8 @@ pub fn write_bootstrap() -> crate::Result {
     let mut cout = stdout.lock();
 
     cout.write_all(b"IWAD")?; // four-byte IWAD header
-    cout.write_all(&[lumps.len() as u8, 0, 0, 0])?; // number of lumps
-    cout.write_all(&[pos as u8, 0, 0, 0])?; // final position
+    cout.write_all(&(lumps.len() as u32).to_le_bytes())?; // number of lumps
+    cout.write_all(&(pos as u32).to_le_bytes())?; // final position
 
     // write the lumps
     ArrayIter::new(lumps)
@@ -77,9 +78,10 @@ pub fn write_bootstrap() -> crate::Result {
     waddir
         .into_iter()
         .map(|waddir| {
-            cout.write_all(&[waddir.pos as u8, 0, 0, 0])?;
-            cout.write_all(&[waddir.len as u8, 0, 0, 0])?;
-            cout.write_all(waddir.name)
+            cout.write_all(&(waddir.pos as u32).to_le_bytes())?;
+            cout.write_all(&(waddir.len as u32).to_le_bytes())?;
+            let namebytes: ArrayVec<[u8; 8]> = waddir.name.bytes().chain(iter::repeat(0)).take(8).collect();
+            cout.write_all(&namebytes)
         })
         .collect::<io::Result<()>>()?;
 
@@ -87,7 +89,7 @@ pub fn write_bootstrap() -> crate::Result {
 }
 
 struct Lump {
-    name: &'static [u8],
+    name: &'static str,
     data: Cow<'static, [u8]>,
 }
 
@@ -95,5 +97,5 @@ struct Lump {
 struct Waddir {
     pos: usize,
     len: usize,
-    name: &'static [u8],
+    name: &'static str,
 }

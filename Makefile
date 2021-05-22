@@ -8,8 +8,8 @@ CARGO=cargo
 CP=cp
 DEHACKED=dist/klamath.deh
 DEUTEX=deutex
-DEUTEX_BASIC_ARGS=-v0 -rate accept
-DEUTEX_ARGS=$(DEUTEX_BASIC_ARGS) -doom2 bootstrap/
+DEUTEX_BASIC_ARGS=-v5 -rate accept
+DEUTEX_ARGS=$(DEUTEX_BASIC_ARGS) -doom2 bootstrap/bootstrap.wad
 KLAMATH=dist/klamath.wad
 #MANUAL=dist/manual.pdf
 PDFTEX=pdftex
@@ -26,13 +26,18 @@ GENMIDI=lumps/genmidi.lmp
 PLAYPAL=lumps/playpal.lmp
 WADINFO=wadinfo.txt
 
+FLATS=$(wildcard flats/*)
 LEVELS=levels/map01.wad
+PATCHES=$(wildcard patches/*)
+TEXTURES=textures/texture1.txt
+
+RESOURCES=$(FLATS) $(LEVELS) $(PATCHES) $(TEXTURES)
 
 include models/Makefile
 
 all: $(KLAMATH) $(DEHACKED) $(UPLTEMPL)
 
-$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DEHLUMP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) $(WADINFO)
+$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DEHLUMP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) $(RESOURCES) $(WADINFO)
 	$(RM) $(KLAMATH)
 	@mkdir -p dist
 	$(DEUTEX) $(DEUTEX_ARGS) -iwad -build $(WADINFO) $@
