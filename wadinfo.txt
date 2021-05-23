@@ -1,7 +1,7 @@
 ; Apache 2.0 License
 ; 
 ; Contains information necessary for DeuTeX to build klamath.iwad
-
+ 
 ; Important Data Lumps
 [lumps]
 PLAYPAL

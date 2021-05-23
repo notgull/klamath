@@ -1,6 +1,8 @@
-bootstrap/bootstrap.wad
+bootstrap/
 dehacked/dehacked.deh.bak
 dehacked/dehacked.whacked
 dist
 lumps/
+maps/{*.backup1,*.backup2,*.backup3,*.dbs}
+models/*.blend1
 util/target

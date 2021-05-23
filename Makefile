@@ -3,13 +3,15 @@
 # This Makefile assembles all of the resources necessary to build klamath.wad and then calls DeuTeX to 
 # create the WAD.
 
+# PHONY: all
+
 BASEDIR=$(PWD)
 CARGO=cargo
 CP=cp
 DEHACKED=dist/klamath.deh
 DEUTEX=deutex
-DEUTEX_BASIC_ARGS=-v5 -rate accept
-DEUTEX_ARGS=$(DEUTEX_BASIC_ARGS) -doom2 bootstrap/bootstrap.wad
+DEUTEX_BASIC_ARGS=-v0 -rate accept
+DEUTEX_ARGS=$(DEUTEX_BASIC_ARGS) -doom2 bootstrap/
 KLAMATH=dist/klamath.wad
 #MANUAL=dist/manual.pdf
 PDFTEX=pdftex
@@ -18,7 +20,7 @@ UTIL_DIR=util
 UTIL=$(UTIL_DIR)/target/release/klamath-util
 RM=$(UTIL) rm
 
-BOOTSTRAP=bootstrap/bootstrap.wad
+BOOTSTRAP=bootstrap/doom2.wad
 COLORMAP=lumps/colormap.lmp
 DEHLUMP=lumps/dehacked.lmp
 DMXGUS=lumps/dmxgus.lmp
@@ -33,11 +35,9 @@ TEXTURES=textures/texture1.txt
 
 RESOURCES=$(FLATS) $(LEVELS) $(PATCHES) $(TEXTURES)
 
-include models/Makefile
-
 all: $(KLAMATH) $(DEHACKED) $(UPLTEMPL)
 
-$(KLAMATH): $(BOOTSTRAP) $(COLORMAP) $(DEHLUMP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) $(RESOURCES) $(WADINFO)
+$(KLAMATH): models_out $(BOOTSTRAP) $(COLORMAP) $(DEHLUMP) $(DMXGUS) $(GENMIDI) $(PLAYPAL) $(RESOURCES) $(WADINFO)
 	$(RM) $(KLAMATH)
 	@mkdir -p dist
 	$(DEUTEX) $(DEUTEX_ARGS) -iwad -build $(WADINFO) $@
@@ -79,3 +79,5 @@ $(UTIL): $(wildcard $(UTIL_DIR)/src/*)
 #$(MANUAL): manual/manual.tex
 #	@mkdir -p dist
 #	$(PDFTEX) -synctex=1 -interaction=nonstopmode $< --output-directory=dist
+
+include models/Makefile
